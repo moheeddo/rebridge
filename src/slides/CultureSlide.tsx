@@ -5,8 +5,7 @@ const CONTENT = {
   videoSrc: '/videos/bg-agenda.mp4',
   accent: '커뮤니케이션',
   sub: '일은 시스템이 아니라 결국 사람으로 됩니다',
-  photoPlaceholder1: '워크숍 사진 1',
-  photoPlaceholder2: '워크숍 사진 2',
+  photos: ['/photos/slide5/1.jpg', '/photos/slide5/2.jpg'],
 };
 
 export default function CultureSlide() {
@@ -40,23 +39,26 @@ export default function CultureSlide() {
             </p>
           </div>
 
-          {/* Photo placeholders */}
+          {/* Photos */}
           <div className="entrance entrance-d4 flex justify-center" style={{ gap: 'clamp(12px, 1.5vw, 24px)' }}>
-            {[CONTENT.photoPlaceholder1, CONTENT.photoPlaceholder2].map((label, i) => (
+            {CONTENT.photos.map((src, i) => (
               <div
                 key={i}
                 style={{
                   width: 'clamp(180px, 26vw, 380px)',
                   height: 'clamp(120px, 16vw, 240px)',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  background: 'linear-gradient(135deg, rgba(255,255,255,0.04), rgba(255,255,255,0.01))',
-                  border: '1px dashed rgba(255,255,255,0.15)',
+                  overflow: 'hidden',
                   borderRadius: 'clamp(8px, 1vw, 16px)',
+                  background: 'linear-gradient(135deg, rgba(255,255,255,0.04), rgba(255,255,255,0.01))',
+                  border: '1px solid rgba(255,255,255,0.1)',
                 }}
               >
-                <span className="font-pretendard" style={{ fontSize: 'clamp(12px, 0.9vw, 16px)', opacity: 0.3 }}>{label}</span>
+                <img
+                  src={src}
+                  alt={`slide5-${i + 1}`}
+                  style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
+                  onError={(e) => { e.currentTarget.style.display = 'none'; }}
+                />
               </div>
             ))}
           </div>

@@ -5,8 +5,7 @@ const CONTENT = {
   videoSrc: '/videos/bg-quote.mp4',
   title: '전문가보다',
   accent: '문제를 해결하는 사람',
-  photoPlaceholder1: '회의실 사진 1',
-  photoPlaceholder2: '회의실 사진 2',
+  photos: ['/photos/slide3/1.jpg', '/photos/slide3/2.jpg'],
 };
 
 export default function ParadigmSlide() {
@@ -32,23 +31,26 @@ export default function ParadigmSlide() {
             </h2>
           </div>
 
-          {/* Photo placeholders */}
+          {/* Photos */}
           <div className="entrance entrance-d2 flex justify-center" style={{ gap: 'clamp(12px, 1.5vw, 24px)' }}>
-            {[CONTENT.photoPlaceholder1, CONTENT.photoPlaceholder2].map((label, i) => (
+            {CONTENT.photos.map((src, i) => (
               <div
                 key={i}
                 style={{
                   width: 'clamp(200px, 28vw, 420px)',
                   height: 'clamp(140px, 18vw, 280px)',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  background: 'linear-gradient(135deg, rgba(255,255,255,0.04), rgba(255,255,255,0.01))',
-                  border: '1px dashed rgba(255,255,255,0.15)',
+                  overflow: 'hidden',
                   borderRadius: 'clamp(8px, 1vw, 16px)',
+                  background: 'linear-gradient(135deg, rgba(255,255,255,0.04), rgba(255,255,255,0.01))',
+                  border: '1px solid rgba(255,255,255,0.1)',
                 }}
               >
-                <span className="font-pretendard" style={{ fontSize: 'clamp(12px, 0.9vw, 16px)', opacity: 0.3 }}>{label}</span>
+                <img
+                  src={src}
+                  alt={`slide3-${i + 1}`}
+                  style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
+                  onError={(e) => { e.currentTarget.style.display = 'none'; }}
+                />
               </div>
             ))}
           </div>

@@ -7,8 +7,7 @@ const CONTENT = {
   title: '창의력',
   equals: '=',
   accent: '연결 능력',
-  photoPlaceholder1: 'Before',
-  photoPlaceholder2: 'After',
+  photos: ['/photos/slide4/1.jpg', '/photos/slide4/2.jpg'],
 };
 
 const CONNECTIONS = [
@@ -66,27 +65,32 @@ export default function ExperienceSlide() {
 
           {/* Before / After photos */}
           <div className="entrance entrance-d3 flex justify-center" style={{ gap: 'clamp(12px, 1.5vw, 24px)' }}>
-            {[CONTENT.photoPlaceholder1, CONTENT.photoPlaceholder2].map((label, i) => (
+            {CONTENT.photos.map((src, i) => (
               <div
                 key={i}
                 className="flex flex-col items-center"
                 style={{ gap: '8px' }}
               >
                 <span className="font-pretendard font-bold" style={{ fontSize: 'clamp(12px, 0.9vw, 16px)', color: i === 0 ? '#EF4444' : '#34D399', opacity: 0.6 }}>
-                  {label}
+                  {i === 0 ? 'Before' : 'After'}
                 </span>
                 <div
                   style={{
                     width: 'clamp(200px, 28vw, 420px)',
                     height: 'clamp(140px, 18vw, 280px)',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    background: 'linear-gradient(135deg, rgba(255,255,255,0.04), rgba(255,255,255,0.01))',
-                    border: '1px dashed rgba(255,255,255,0.15)',
+                    overflow: 'hidden',
                     borderRadius: 'clamp(8px, 1vw, 16px)',
+                    background: 'linear-gradient(135deg, rgba(255,255,255,0.04), rgba(255,255,255,0.01))',
+                    border: '1px solid rgba(255,255,255,0.1)',
                   }}
-                />
+                >
+                  <img
+                    src={src}
+                    alt={`slide4-${i + 1}`}
+                    style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
+                    onError={(e) => { e.currentTarget.style.display = 'none'; }}
+                  />
+                </div>
               </div>
             ))}
           </div>
