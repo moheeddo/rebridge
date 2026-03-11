@@ -19,20 +19,20 @@ export default function IntroSlide() {
     <div className="slide">
       <VideoBackground src={CONTENT.videoSrc} overlayOpacity={0.6} />
 
-      <div className="relative z-10 flex items-center justify-center w-full h-full" style={{ padding: '5%' }}>
-        <div className="flex flex-col items-center" style={{ maxWidth: '90%', gap: 'clamp(32px, 4vw, 64px)' }}>
+      <div className="relative z-10 flex items-center justify-center w-full h-full" style={{ padding: '3% 2%' }}>
+        <div className="flex flex-col items-center w-full" style={{ maxWidth: '96%', gap: 'clamp(32px, 4vw, 64px)' }}>
 
           {/* Timeline dots */}
-          <div className="entrance entrance-d1 w-full flex items-start justify-center relative" style={{ gap: 'clamp(8px, 1vw, 16px)' }}>
+          <div className="entrance entrance-d1 w-full flex items-start justify-between relative" style={{ padding: '0 4%' }}>
             <div
               className="absolute line-reveal"
-              style={{ top: 'clamp(14px, 1.6vw, 24px)', left: '10%', right: '10%', height: '2px', background: 'linear-gradient(90deg, rgba(167,139,250,0.1), rgba(167,139,250,0.4), rgba(167,139,250,0.1))' }}
+              style={{ top: 'clamp(14px, 1.6vw, 24px)', left: '6%', right: '6%', height: '2px', background: 'linear-gradient(90deg, rgba(167,139,250,0.1), rgba(167,139,250,0.4), rgba(167,139,250,0.1))' }}
             />
             {TIMELINE.map((item, i) => (
-              <div key={i} className={`entrance entrance-d${i + 1} flex flex-col items-center text-center relative`} style={{ flex: 1 }}>
+              <div key={i} className={`entrance entrance-d${i + 1} flex flex-col items-center text-center relative`}>
                 <div style={{ width: 'clamp(10px, 1.2vw, 18px)', height: 'clamp(10px, 1.2vw, 18px)', borderRadius: '50%', background: '#A78BFA', boxShadow: '0 0 12px rgba(167,139,250,0.5)', marginBottom: 'clamp(12px, 1.4vw, 24px)', zIndex: 2 }} />
                 <p className="font-pretendard font-bold" style={{ fontSize: 'clamp(18px, 1.8vw, 34px)', color: '#A78BFA' }}>{item.year}</p>
-                <p className="font-pretendard" style={{ fontSize: 'clamp(13px, 1.1vw, 20px)', opacity: 0.7, marginTop: '4px' }}>{item.label}</p>
+                <p className="font-pretendard" style={{ fontSize: 'clamp(12px, 1vw, 18px)', opacity: 0.7, marginTop: '4px', whiteSpace: 'nowrap' }}>{item.label}</p>
               </div>
             ))}
           </div>
