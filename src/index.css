@@ -1,0 +1,244 @@
+@import "tailwindcss";
+
+@theme {
+  --font-pretendard: 'Pretendard Variable', Pretendard, -apple-system, BlinkMacSystemFont, sans-serif;
+  --color-glass-border: rgba(255, 255, 255, 0.12);
+  --color-glass-bg-start: rgba(255, 255, 255, 0.08);
+  --color-glass-bg-end: rgba(255, 255, 255, 0.03);
+  --color-accent: #A78BFA;
+  --color-accent-rose: #F472B6;
+  --color-accent-warm: #FBBF24;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body, #root {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: #000;
+  font-family: 'Pretendard Variable', Pretendard, -apple-system, BlinkMacSystemFont, sans-serif;
+  color: #fff;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ── Liquid Glass Card ── */
+.glass-card {
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.08) 0%,
+    rgba(255, 255, 255, 0.03) 100%
+  );
+  backdrop-filter: blur(24px) saturate(1.4);
+  -webkit-backdrop-filter: blur(24px) saturate(1.4);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: clamp(12px, 1.5vw, 24px);
+  position: relative;
+  overflow: hidden;
+}
+
+.glass-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 60%;
+  height: 60%;
+  background: radial-gradient(
+    ellipse at 20% 20%,
+    rgba(255, 255, 255, 0.06) 0%,
+    transparent 70%
+  );
+  pointer-events: none;
+}
+
+/* ── Slide base ── */
+.slide {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+/* ── Animated gradient backgrounds ── */
+.animated-gradient {
+  background-size: 400% 400%;
+  animation: gradientShift 15s ease infinite;
+}
+
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  25% { background-position: 100% 50%; }
+  50% { background-position: 100% 100%; }
+  75% { background-position: 0% 100%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* ── Responsive clamp utilities ── */
+.text-hero { font-size: clamp(40px, 5.5vw, 110px); }
+.text-title { font-size: clamp(32px, 3.8vw, 72px); }
+.text-subtitle { font-size: clamp(24px, 2.8vw, 54px); }
+.text-body { font-size: clamp(16px, 1.25vw, 24px); }
+.text-caption { font-size: clamp(15px, 1.15vw, 22px); }
+.text-small { font-size: clamp(14px, 1vw, 19px); }
+.text-label { font-size: clamp(18px, 1.5vw, 28px); }
+.text-stat { font-size: clamp(32px, 3.8vw, 72px); }
+
+/* ── Staggered entrance animation ── */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(clamp(15px, 2vw, 30px));
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+[data-slide-active="true"] .entrance {
+  animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+[data-slide-active="true"] .entrance-d1 { animation-delay: 0.15s; }
+[data-slide-active="true"] .entrance-d2 { animation-delay: 0.3s; }
+[data-slide-active="true"] .entrance-d3 { animation-delay: 0.45s; }
+[data-slide-active="true"] .entrance-d4 { animation-delay: 0.6s; }
+[data-slide-active="true"] .entrance-d5 { animation-delay: 0.75s; }
+[data-slide-active="true"] .entrance-d6 { animation-delay: 0.9s; }
+
+/* ── Accent text glow pulse ── */
+@keyframes accentGlow {
+  0%, 100% { text-shadow: 0 0 20px rgba(167, 139, 250, 0.3); }
+  50% { text-shadow: 0 0 40px rgba(167, 139, 250, 0.6), 0 0 80px rgba(167, 139, 250, 0.15); }
+}
+
+[data-slide-active="true"] .accent-glow {
+  animation: accentGlow 3s ease-in-out infinite 1s;
+}
+
+/* ── Text highlight marker sweep ── */
+@keyframes highlightSweep {
+  0%   { background-size: 0% 100%; }
+  100% { background-size: 100% 100%; }
+}
+
+.text-highlight {
+  background: linear-gradient(90deg, rgba(167, 139, 250, 0.25) 100%, transparent 100%);
+  background-repeat: no-repeat;
+  background-position: left center;
+  background-size: 0% 100%;
+  padding: 0.05em 0.15em;
+  border-radius: 3px;
+  color: #A78BFA;
+  font-weight: 700;
+}
+
+[data-slide-active="true"] .text-highlight {
+  animation: highlightSweep 0.8s cubic-bezier(0.22, 1, 0.36, 1) 1.2s forwards;
+}
+
+/* ── Glass card shimmer sweep ── */
+@keyframes shimmer-sweep {
+  0%, 85% { transform: translateX(-100%) rotate(25deg); }
+  100% { transform: translateX(350%) rotate(25deg); }
+}
+
+[data-slide-active="true"] .glass-card::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -100%;
+  width: 50%;
+  height: 200%;
+  background: linear-gradient(
+    105deg,
+    transparent 40%,
+    rgba(255, 255, 255, 0.03) 45%,
+    rgba(255, 255, 255, 0.06) 50%,
+    rgba(255, 255, 255, 0.03) 55%,
+    transparent 60%
+  );
+  animation: shimmer-sweep 8s ease-in-out 2s infinite;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* ── Line reveal ── */
+@keyframes lineReveal {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+
+[data-slide-active="true"] .line-reveal {
+  transform-origin: center;
+  animation: lineReveal 1s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+/* ── Progress bar glow ── */
+@keyframes progressGlow {
+  0%, 100% { box-shadow: 0 0 4px rgba(167, 139, 250, 0.3); }
+  50% { box-shadow: 0 0 10px rgba(167, 139, 250, 0.6); }
+}
+
+.progress-bar-accent {
+  animation: progressGlow 2s ease-in-out infinite;
+}
+
+/* ── Floating particles ── */
+@keyframes float {
+  0%, 100% { transform: translateY(0px) rotate(0deg); opacity: 0.3; }
+  33% { transform: translateY(-20px) rotate(120deg); opacity: 0.6; }
+  66% { transform: translateY(10px) rotate(240deg); opacity: 0.4; }
+}
+
+.floating-particle {
+  animation: float 8s ease-in-out infinite;
+}
+
+/* ── Pulse glow ── */
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 20px rgba(167, 139, 250, 0.1); }
+  50% { box-shadow: 0 0 40px rgba(167, 139, 250, 0.3); }
+}
+
+.pulse-glow { animation: pulse-glow 3s ease-in-out infinite; }
+
+/* ── Timeline connector ── */
+@keyframes timelineDraw {
+  from { height: 0; }
+  to { height: 100%; }
+}
+
+[data-slide-active="true"] .timeline-line {
+  animation: timelineDraw 1.5s cubic-bezier(0.16, 1, 0.3, 1) 0.5s both;
+}
+
+/* ── Counter animation ── */
+@keyframes countUp {
+  from { opacity: 0; transform: scale(0.5); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+[data-slide-active="true"] .count-up {
+  animation: countUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+/* ── Icon bounce ── */
+@keyframes iconBounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+.icon-bounce {
+  animation: iconBounce 2s ease-in-out infinite;
+}
+
+/* ── Scrollbar hide ── */
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
