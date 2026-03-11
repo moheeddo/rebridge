@@ -25,8 +25,11 @@ export default function ExperienceSlide() {
       <div className="relative z-10 flex items-center justify-center w-full h-full" style={{ padding: '5%' }}>
         <div className="flex flex-col items-center" style={{ maxWidth: '85%', gap: 'clamp(28px, 3.5vw, 56px)' }}>
 
-          {/* Title */}
-          <div className="entrance entrance-d1 text-center">
+          {/* Tag + Title */}
+          <div className="entrance entrance-d1 text-center" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 'clamp(8px, 1vw, 16px)' }}>
+            <span className="font-pretendard tracking-widest" style={{ fontSize: 'clamp(13px, 1vw, 18px)', color: '#F472B6', letterSpacing: '0.15em', opacity: 0.8 }}>
+              두 번째 깨달음
+            </span>
             <h2
               className="font-pretendard font-bold"
               style={{ fontSize: 'clamp(36px, 4.5vw, 90px)', letterSpacing: '-0.03em', lineHeight: 1.15 }}
