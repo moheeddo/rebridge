@@ -76,8 +76,8 @@ export default function ExperienceSlide() {
                 </span>
                 <div
                   style={{
-                    width: 'clamp(280px, 36vw, 560px)',
-                    height: 'clamp(190px, 24vw, 380px)',
+                    width: 'clamp(320px, 40vw, 640px)',
+                    height: 'clamp(220px, 28vw, 440px)',
                     overflow: 'hidden',
                     borderRadius: 'clamp(8px, 1vw, 16px)',
                     background: 'linear-gradient(135deg, rgba(255,255,255,0.04), rgba(255,255,255,0.01))',
@@ -87,7 +87,7 @@ export default function ExperienceSlide() {
                   <img
                     src={src}
                     alt={`slide4-${i + 1}`}
-                    style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
+                    style={{ width: '100%', height: '100%', objectFit: 'contain', display: 'block' }}
                     onError={(e) => { e.currentTarget.style.display = 'none'; }}
                   />
                 </div>
