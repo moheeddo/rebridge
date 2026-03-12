@@ -5,7 +5,7 @@ const CONTENT = {
   videoSrc: '/videos/bg-agenda.mp4',
   accent: '커뮤니케이션',
   sub: '일은 시스템이 아니라 결국 사람으로 됩니다',
-  photos: ['/photos/slide5/1.jpg', '/photos/slide5/2.jpg'],
+  photos: ['/photos/slide5/1.png', '/photos/slide5/2.png'],
 };
 
 export default function CultureSlide() {
@@ -45,8 +45,8 @@ export default function CultureSlide() {
               <div
                 key={i}
                 style={{
-                  width: 'clamp(180px, 26vw, 380px)',
-                  height: 'clamp(120px, 16vw, 240px)',
+                  width: 'clamp(280px, 36vw, 560px)',
+                  height: 'clamp(190px, 24vw, 380px)',
                   overflow: 'hidden',
                   borderRadius: 'clamp(8px, 1vw, 16px)',
                   background: 'linear-gradient(135deg, rgba(255,255,255,0.04), rgba(255,255,255,0.01))',

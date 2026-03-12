@@ -5,7 +5,7 @@ const CONTENT = {
   videoSrc: '/videos/bg-quote.mp4',
   title: '전문가보다',
   accent: '문제를 해결하는 사람',
-  photos: ['/photos/slide3/1.jpg', '/photos/slide3/2.jpg'],
+  photos: ['/photos/slide3/1.png', '/photos/slide3/2.png'],
 };
 
 export default function ParadigmSlide() {
@@ -37,8 +37,8 @@ export default function ParadigmSlide() {
               <div
                 key={i}
                 style={{
-                  width: 'clamp(200px, 28vw, 420px)',
-                  height: 'clamp(140px, 18vw, 280px)',
+                  width: 'clamp(280px, 36vw, 560px)',
+                  height: 'clamp(190px, 24vw, 380px)',
                   overflow: 'hidden',
                   borderRadius: 'clamp(8px, 1vw, 16px)',
                   background: 'linear-gradient(135deg, rgba(255,255,255,0.04), rgba(255,255,255,0.01))',

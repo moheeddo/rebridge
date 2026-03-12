@@ -7,7 +7,7 @@ const CONTENT = {
   title: '창의력',
   equals: '=',
   accent: '연결 능력',
-  photos: ['/photos/slide4/1.jpg', '/photos/slide4/2.jpg'],
+  photos: ['/photos/slide4/1.png', '/photos/slide4/2.png'],
 };
 
 const CONNECTIONS = [
@@ -76,8 +76,8 @@ export default function ExperienceSlide() {
                 </span>
                 <div
                   style={{
-                    width: 'clamp(200px, 28vw, 420px)',
-                    height: 'clamp(140px, 18vw, 280px)',
+                    width: 'clamp(280px, 36vw, 560px)',
+                    height: 'clamp(190px, 24vw, 380px)',
                     overflow: 'hidden',
                     borderRadius: 'clamp(8px, 1vw, 16px)',
                     background: 'linear-gradient(135deg, rgba(255,255,255,0.04), rgba(255,255,255,0.01))',
